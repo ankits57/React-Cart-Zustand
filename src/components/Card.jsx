@@ -6,6 +6,7 @@ function Card(props) {
   const removeItem = ProductStore((state) => state.removeItem);
   const cartItems = ProductStore((state) => state.cartItems);
   const addToCart = ProductStore((state) => state.addToCart);
+  const removeFromCart = ProductStore((state) => state.removeFromCart);
 
   // Check if the item is already in the cart
   const isInCart = cartItems.some((item) => item.id === props.id);
@@ -13,6 +14,7 @@ function Card(props) {
   const handleButtonClick = () => {
     if (isInCart) {
       removeItem(props.id);
+      removeFromCart();
     } else {
       addItem(props);
       addToCart();
